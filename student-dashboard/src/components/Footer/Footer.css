@@ -1,0 +1,148 @@
+/* src/components/Footer/Footer.css */
+.footer {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    padding: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .creator-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .created-by {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+  }
+  
+  .creator-name {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+  
+  .creator-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .creator-name:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .copyright {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    animation: slideIn 0.5s ease-out 0.2s backwards;
+  }
+  
+  .year {
+    font-weight: 600;
+  }
+  
+  .footer-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      transparent 45%,
+      rgba(255, 255, 255, 0.1) 47%,
+      rgba(255, 255, 255, 0.1) 53%,
+      transparent 55%);
+    background-size: 20px 20px;
+    animation: moveBackground 15s linear infinite;
+  }
+  
+  /* Shine effect */
+  .creator-name::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 400px 0;
+    }
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 200%;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-content {
+      padding: 0 1rem;
+    }
+    
+    .creator-info {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .copyright {
+      flex-direction: column;
+      text-align: center;
+    }
+  }

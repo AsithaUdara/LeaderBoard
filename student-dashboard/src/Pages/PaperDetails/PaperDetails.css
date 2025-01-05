@@ -1,0 +1,26 @@
+.paper-details {
+    min-height: 100vh;
+    background-color: #f3f4f6;
+  }
+  
+  .paper-header {
+    padding: 2rem;
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .content {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 1024px) {
+    .content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
