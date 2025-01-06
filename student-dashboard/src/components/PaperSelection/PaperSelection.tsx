@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './PaperSelection.css';
 
-// Define props interface
 interface PaperSelectionProps {
   papers: {
     id: number;
@@ -15,7 +14,7 @@ interface PaperSelectionProps {
 const PaperSelection: React.FC<PaperSelectionProps> = ({ papers }) => {
   return (
     <div className="paper-selection">
-      <h2>Choose Number of Paper</h2>
+      <h2 className="section-title">Choose Number of Paper</h2>
       <div className="paper-grid">
         {papers.map((paper) => (
           <Link 
@@ -23,7 +22,11 @@ const PaperSelection: React.FC<PaperSelectionProps> = ({ papers }) => {
             key={paper.id}
             className="paper-card"
           >
-            {paper.title}
+            <div className="card-content">
+              <span className="paper-number">{paper.id}</span>
+              <h3 className="paper-title">{paper.title}</h3>
+              <div className="card-decoration"></div>
+            </div>
           </Link>
         ))}
       </div>
