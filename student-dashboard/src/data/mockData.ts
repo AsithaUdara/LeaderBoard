@@ -3,7 +3,7 @@ import { Paper, Student } from '../types';
 export const papers: Paper[] = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
   title: `Paper ${i + 1}`,
-  driveLink: 'https://drive.google.com/your-drive-link-here'
+  driveLink: 'https://drive.google.com/drive/folders/1kaJsqi0pD8O6RRp7ifCJXCna0z2UHRI_?usp=drive_link'
 }));
 
 export const students: Student[] = [
