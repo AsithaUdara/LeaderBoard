@@ -1,4 +1,10 @@
-import { Student, Paper } from '../types';
+import { Paper, Student } from '../types';
+
+export const papers: Paper[] = Array.from({ length: 10 }, (_, i) => ({
+  id: i + 1,
+  title: `Paper ${i + 1}`,
+  driveLink: 'https://drive.google.com/your-drive-link-here'
+}));
 
 export const students: Student[] = [
   { id: 1, name: "Chamasha", marks: 93 },
@@ -9,9 +15,3 @@ export const students: Student[] = [
   { id: 6, name: "Idusha", marks: 98 },
   { id: 7, name: "Rusiru", marks: 98 }
 ];
-
-export const papers: Paper[] = Array.from({ length: 10 }, (_, i) => ({
-  id: i + 1,
-  title: `Paper ${i + 1}`,
-  driveLink: 'https://drive.google.com/your-drive-link-here'
-}));

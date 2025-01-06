@@ -1,3 +1,4 @@
+// src/Pages/Home/Home.tsx
 import React from 'react';
 import Header from '../../components/Header/Header';
 import PaperSelection from '../../components/PaperSelection/PaperSelection';

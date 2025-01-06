@@ -1,6 +1,9 @@
 // src/components/LeaderBoard/LeaderBoard.tsx
 import React from 'react';
 import './LeaderBoard.css';
+import { Student } from '../../types';
+
+
 
 const LeaderBoard: React.FC<{ students: Student[] }> = ({ students }) => {
   const sortedStudents = [...students].sort((a, b) => b.marks - a.marks);
