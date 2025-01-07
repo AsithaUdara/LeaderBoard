@@ -1,26 +1,140 @@
+/* src/pages/PaperDetails/PaperDetails.css */
 .paper-details {
-    min-height: 100vh;
-    background-color: #f3f4f6;
-  }
-  
-  .paper-header {
-    padding: 2rem;
-    background-color: white;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.paper-header {
+  padding: 2rem;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.paper-header h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 600;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.content {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Add to PaperDetails.css */
+.coming-soon {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.coming-soon h3 {
+  font-size: 2rem;
+  color: #6366f1;
+  margin-bottom: 1rem;
+}
+
+.coming-soon p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
   .content {
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 100%;
+    padding: 1.5rem;
+    gap: 1.5rem;
   }
-  
-  @media (max-width: 1024px) {
-    .content {
-      grid-template-columns: 1fr;
-    }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
   }
-  
+
+  .chart-section {
+    overflow-x: auto;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .paper-header {
+    padding: 1.5rem;
+  }
+
+  .paper-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paper-header {
+    padding: 1rem;
+  }
+
+  .paper-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .content {
+    padding: 0.75rem;
+  }
+
+  .leaderboard-section,
+  .chart-section {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) {
+  .content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Print styles */
+@media print {
+  .paper-details {
+    background: white;
+  }
+
+  .content {
+    display: block;
+  }
+
+  .leaderboard-section,
+  .chart-section {
+    page-break-inside: avoid;
+  }
+}
