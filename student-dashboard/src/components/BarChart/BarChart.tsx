@@ -26,21 +26,21 @@ const BarChart: React.FC<BarChartProps> = ({ students }) => {
           ))}
         </div>
         <div className="chart">
-          {students.map((student, index) => (
-            <div key={student.id} className="bar-column">
-              <div className="bar-wrapper">
-                <div 
-                  className="bar" 
-                  style={{ 
-                    height: `${student.marks}%`,
-                    backgroundColor: colors[index % colors.length]
-                  }}
-                >
-                  <span className="marks-label">{student.marks}%</span>
-                </div>
-              </div>
-              <span className="name-label">{student.name}</span>
-            </div>
+    {students.map((student, index) => (
+      <div key={student.id} className="bar-column">
+        <div className="bar-wrapper">
+          <div 
+            className="bar" 
+            style={{ 
+              height: `calc(${student.marks}% - 2px)`, // Subtract border width if any
+              backgroundColor: colors[index % colors.length]
+            }}
+          >
+            <span className="marks-label">{student.marks}%</span>
+          </div>
+        </div>
+        <span className="name-label">{student.name}</span>
+      </div>
           ))}
         </div>
       </div>

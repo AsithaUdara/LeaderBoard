@@ -1,17 +1,28 @@
 /* src/components/BarChart/BarChart.css */
 .bar-chart {
   padding: 2rem;
-  background-color: white;
+  background: white;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.bar-chart h2 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .chart-container {
   position: relative;
   display: flex;
   margin-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 1rem;
+  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.03), transparent);
+  border-radius: 0.5rem;
 }
 
 .y-axis {
@@ -21,6 +32,7 @@
   width: 50px;
   height: 400px;
   margin-right: 1rem;
+
 }
 
 .y-mark {
@@ -30,11 +42,12 @@
 }
 
 .y-mark span {
-  font-size: 12px;
-  color: #666;
+  font-size: 0.75rem;
+  color: #64748b;
   width: 35px;
   text-align: right;
   margin-right: 10px;
+  font-weight: 500;
 }
 
 .grid-line {
@@ -42,7 +55,8 @@
   left: 45px;
   right: -1000px;
   height: 1px;
-  background-color: #eee;
+  background: rgba(203, 213, 225, 0.5);
+  z-index: 1;
 }
 
 .chart {
@@ -52,7 +66,9 @@
   align-items: flex-end;
   height: 400px;
   position: relative;
+  z-index: 2;
   margin-bottom: 30px;
+  border-bottom: 8px solid #fff;
 }
 
 .bar-column {
@@ -69,56 +85,135 @@
   height: 100%;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
 }
 
 .bar {
   width: 30px;
-  background-color: #3b82f6;
-  border-radius: 4px 4px 0 0;
+  border-radius: 6px 6px 0 0;
   position: relative;
-  margin: 0 auto;
-  min-height: 2px; /* Ensure bar is always visible */
+  min-height: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: growUp 1s ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform-origin: bottom; 
 }
 
 .marks-label {
   position: absolute;
-  top: -20px;
+  top: -25px;
   width: 100%;
   text-align: center;
-  font-size: 12px;
-  color: #666;
+  font-size: 0.75rem;
+  color: #1e293b;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.bar:hover .marks-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .name-label {
   position: absolute;
-  bottom: -50px;
+  bottom: -20px;
   width: 100%;
   text-align: center;
-  font-size: 12px;
-  color: #666;
-  white-space: nowrap;
-  transform: rotate(-45deg);
-  transform-origin: top left;
-  left: 7px;
+  font-size: 0.75rem;
+  color: #475569;
+  font-weight: 500;
+  transform-origin: center;
+  transition: all 0.3s ease;
 }
 
-/* Add some spacing for rotated labels */
-.chart-container {
-  margin-bottom: 50px;
+@keyframes growUp {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Make sure bars are always visible */
-.bar {
-  transition: height 0.3s ease;
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .chart-container {
+    overflow-x: auto;
+    padding-bottom: 3rem;
+  }
+  
+  .chart {
+    min-width: 800px;
+  }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
+  .bar-chart {
+    padding: 1.5rem 1rem;
+  }
+
+  .bar-chart h2 {
+    font-size: 1.25rem;
+  }
+
+  .y-axis {
+    height: 300px;
+  }
+
+  .chart {
+    height: 300px;
+  }
+
+  .bar {
+    width: 25px;
+  }
+
+  .name-label {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bar-chart {
+    padding: 1rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .chart-container {
+    margin-top: 1rem;
+  }
+
+  .y-mark span {
+    font-size: 0.65rem;
+    width: 30px;
+  }
+
   .bar {
     width: 20px;
   }
-  
-  .name-label {
-    font-size: 10px;
+}
+
+/* Touch Device Optimization */
+@media (hover: none) {
+  .marks-label {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 0.65rem;
+  }
+
+  .bar {
+    box-shadow: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .bar-chart {
+    break-inside: avoid;
+    box-shadow: none;
   }
 }
